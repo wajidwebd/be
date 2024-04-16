@@ -29,8 +29,8 @@ app.post('/api/create-checkout-session',async(req,res)=>{
         payment_method_types:["card"],
         line_items: ProductItems,
         mode: 'payment',
-        success_url:"http://localhost:3000/sucess",
-        cancel_url:"http://localhost:3000/cancel",
+        success_url:"https://fe-1-z28y.onrender.com/sucess",
+        cancel_url:"https://fe-1-z28y.onrender.com/cancel",
           });
 
       res.json({id:session.id})
