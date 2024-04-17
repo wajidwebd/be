@@ -5,7 +5,11 @@ const stripe = require('stripe')('sk_test_51NzuH0SGp41m30vUyUGsnRbqECRBQNafiv6ju
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin: [ "https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+    ))
 
 
 app.get('/',cors(),(req,res)=>{
@@ -29,8 +33,8 @@ app.post('/api/create-checkout-session',async(req,res)=>{
         payment_method_types:["card"],
         line_items: ProductItems,
         mode: 'payment',
-        success_url:"https://fe-1-z28y.onrender.com/sucess",
-        cancel_url:"https://fe-1-z28y.onrender.com/cancel",
+        success_url:"http://localhost:10000/sucess",
+        cancel_url:"http://localhost:10000/cancel",
           });
 
       res.json({id:session.id})
